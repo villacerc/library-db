@@ -36,7 +36,7 @@
   width: 180px;
   height: 80px;
   border: 2px solid red;
-  /* transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
   pointer-events: none; /* Allow clicks to pass through to the video feed */
 }
 

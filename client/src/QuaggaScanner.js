@@ -50,8 +50,8 @@ const QuaggaScanner = ({ onDetected }) => {
                 },
                 locate: true, // Enable locating of the barcode in the image
                 locator: {
-                    patchSize: 'medium', // x-small, small, medium, large, x-large
-                    halfSample: true,
+                    patchSize: 'large', // x-small, small, medium, large, x-large
+                    halfSample: false,
                 },
             },
             (err) => {
@@ -71,7 +71,7 @@ const QuaggaScanner = ({ onDetected }) => {
     }, [lastDetected, onDetected]);
 
     return (<div id="scanner-container" style={{ width: '100%', height: '100%' }} >
-        <div className="reticle"></div>;
+    
         </div>);
 };
 
