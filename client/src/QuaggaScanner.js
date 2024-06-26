@@ -1,6 +1,7 @@
 // src/components/QuaggaScanner.js
 import React, { useEffect, useState } from 'react';
 import Quagga from 'quagga';
+import './App.css';
 
 const QuaggaScanner = ({ onDetected }) => {
     const [lastDetected, setLastDetected] = useState(null);
@@ -69,7 +70,9 @@ const QuaggaScanner = ({ onDetected }) => {
         };
     }, [lastDetected, onDetected]);
 
-    return <div id="scanner-container" style={{ width: '100%', height: '100%' }} />;
+    return (<div id="scanner-container" style={{ width: '100%', height: '100%' }} >
+        <div className="reticle"></div>;
+        </div>);
 };
 
 export default QuaggaScanner;

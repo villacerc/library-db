@@ -28,6 +28,19 @@
   color: #61dafb;
 }
 
+/* src/components/Reticle.css */
+.reticle {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  width: 180px;
+  height: 80px;
+  border: 2px solid red;
+  /* transform: translate(-50%, -50%); */
+  pointer-events: none; /* Allow clicks to pass through to the video feed */
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
