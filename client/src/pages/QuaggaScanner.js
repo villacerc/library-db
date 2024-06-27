@@ -1,7 +1,7 @@
 // src/components/QuaggaScanner.js
 import React, { useEffect, useState } from 'react';
-import Quagga from 'quagga';
-import './App.css';
+import Quagga from '@ericblade/quagga2';
+import './QuaggaScanner.css'; // Import your CSS file
 
 const QuaggaScanner = ({ onDetected }) => {
     const [lastDetected, setLastDetected] = useState(null);
@@ -38,20 +38,18 @@ const QuaggaScanner = ({ onDetected }) => {
                 inputStream: {
                     name: 'Live',
                     type: 'LiveStream',
-                    target: document.querySelector('#scanner-container'),
+                    target: document.querySelector('#interactive'),
                     constraints: {
-                        width: 640,
-                        height: 480,
-                        facingMode: 'environment', // 'user' for front camera, 'environment' for back camera
-                    },
+                        aspectRatio: {ideal: 640/480},
+                      }
                 },
                 decoder: {
                     readers: ['ean_reader'], // EAN-13 reader
                 },
                 locate: true, // Enable locating of the barcode in the image
                 locator: {
-                    patchSize: 'large', // x-small, small, medium, large, x-large
-                    halfSample: false,
+                    // patchSize: 'large', // x-small, small, medium, large, x-large
+                    halfSample: true,
                 },
             },
             (err) => {
@@ -70,8 +68,11 @@ const QuaggaScanner = ({ onDetected }) => {
         };
     }, [lastDetected, onDetected]);
 
-    return (<div id="scanner-container" style={{ width: '100%', height: '100%' }} >
+    return (
+        <div className='barcode-scanner'>
+    <div id="interactive" className='viewport'>
     
+    </div>
         </div>);
 };
 
