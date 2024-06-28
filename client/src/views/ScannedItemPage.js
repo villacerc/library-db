@@ -1,6 +1,6 @@
 function ScannedItem() {
     return (
-        <main class="container mx-auto px-4">
+        <main class="absolute top-0 left-0 right-0 bottom-0">
         <div class="bg-white shadow rounded-lg p-6 flex flex-col md:flex-row">
           <div class="md:w-1/3 mb-6 md:mb-0">
             <img id="book-image" class="w-full h-auto rounded" src="https://via.placeholder.com/150" alt="Book Cover"/>

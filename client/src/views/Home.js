@@ -3,15 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function Home() {
     const navigate = useNavigate();
-    
-    const [detectedCode, setDetectedCode] = useState('');
-    const [hello, setHello] = useState('');
-
-    const handleDetected = (code) => {
-        setDetectedCode(code);
-        console.log(`Detected barcode: ${code}`);
-    };
-
+  
     return (
         <div>
 
