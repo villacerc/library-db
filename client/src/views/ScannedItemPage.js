@@ -1,36 +1,46 @@
-function ScannedItem() {
+import React, { useState } from 'react';
+import bookPlaceholder from "../assets/book-cover-placeholder.png"
+
+function ScannedItem({item}) {
+
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setIsImageLoaded(true);
+  };
+
     return (
-        <main class="absolute top-0 left-0 right-0 bottom-0">
-        <div class="bg-white shadow rounded-lg p-6 flex flex-col md:flex-row">
-          <div class="md:w-1/3 mb-6 md:mb-0">
-            <img id="book-image" class="w-full h-auto rounded" src="https://via.placeholder.com/150" alt="Book Cover"/>
+        <div className="bg-white shadow rounded-lg m-6 p-6 flex flex-col md:flex-row">
+          <div className="md:w-1/3 mb-6 md:mb-0 flex justify-center items-center bg-book-placeholder bg-cover bg-center">
+            <img id="book-image" className={`w-full h-auto rounded md:max-w-72 border-gray-100 border-2 ${isImageLoaded ? '' : 'hidden'}`}  src={item.cover.large} alt="Book Cover" onLoad={handleImageLoad}/>
+            {!isImageLoaded && (
+            <img id="book-placeholder" className="w-full h-auto rounded md:max-w-72 border-gray-100 border-2" src={bookPlaceholder}/>
+          )}
           </div>
-          <div class="md:w-2/3 md:pl-6">
-            <h2 class="text-3xl font-semibold mb-4">The Great Gatsby</h2>
-            <div class="mb-4">
-              <h3 class="text-xl font-medium">Author:</h3>
-              <p id="book-author" class="text-lg text-gray-700">F. Scott Fitzgerald</p>
-            </div>
-            <div class="mb-4">
-              <h3 class="text-xl font-medium">Year:</h3>
-              <p id="book-year" class="text-lg text-gray-700">1925</p>
-            </div>
-            <div class="mb-4">
-              <h3 class="text-xl font-medium">Description:</h3>
-              <p id="book-description" class="text-lg text-gray-700">
-                A novel of the Jazz Age, The Great Gatsby tells the story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.
+          <div className="md:w-2/3 md:pl-3 md:max-w-3xl">
+            <h2 className="text-3xl font-semibold mb-4">{item.title}</h2>
+            <div className="mb-4">
+            <p id="book-description" className="text-lg text-gray-700">
+                {item.subtitle}
               </p>
             </div>
-            <div class="flex justify-between w-full">
-  <div class="flex space-x-4">
-    <button id="take-button" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Take</button>
-    <button id="leave-button" class="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600">Leave</button>
+            <div className="mb-4">
+              <h3 className="text-xl font-medium">{item.authors.length === 1 ? 'Author' : 'Authors'}:</h3>
+              <p id="book-author" className="text-lg text-gray-700">{item.authors.map(author => author.name).join(', ')}</p>
+            </div>
+            <div className="mb-4">
+              <h3 className="text-xl font-medium">Year:</h3>
+              <p id="book-year" className="text-lg text-gray-700">{item.publish_date}</p>
+            </div>
+            <div className="flex justify-between w-full">
+  <div className="flex space-x-4">
+    <button id="take-button" className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Take</button>
+    <button id="leave-button" className="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600">Leave</button>
   </div>
-  <button id="scan-again-button" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Scan Again</button>
+  <button id="scan-again-button" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Scan Again</button>
 </div>
           </div>
         </div>
-      </main>
     )
 }
 

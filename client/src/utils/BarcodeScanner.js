@@ -30,7 +30,7 @@ class BarcodeScanner {
             },
             (err) => {
                 if (err) {
-                    console.error('QuaggaJS initialization error:', err);
+                    // console.error('QuaggaJS initialization error:', err);
                     return;
                 }
                 Quagga.start();
