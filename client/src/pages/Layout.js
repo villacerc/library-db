@@ -1,9 +1,8 @@
 import { Outlet } from "react-router-dom";
-import './Layout.css'
 
-const Layout = () => {
+function Layout () {
   return (
-    <div className='tailwind'>
+    <div className='container w-full md:max-w-3xl mx-auto pt-20'>
       <Outlet />
     </div>
   )

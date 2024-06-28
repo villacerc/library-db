@@ -1,9 +1,8 @@
-// src/components/QuaggaScanner.js
 import React, { useEffect, useState } from 'react';
 import Quagga from '@ericblade/quagga2';
-import './QuaggaScanner.css'; // Import your CSS file
+import BarcodeScanner from './BarcodeScanner';
 
-const QuaggaScanner = ({ onDetected }) => {
+function QuaggaScanner({ onDetected }) {
     const [lastDetected, setLastDetected] = useState(null);
 
     useEffect(() => {
@@ -48,7 +47,7 @@ const QuaggaScanner = ({ onDetected }) => {
                 },
                 locate: true, // Enable locating of the barcode in the image
                 locator: {
-                    // patchSize: 'large', // x-small, small, medium, large, x-large
+                    patchSize: 'large', // x-small, small, medium, large, x-large
                     halfSample: true,
                 },
             },
@@ -69,11 +68,8 @@ const QuaggaScanner = ({ onDetected }) => {
     }, [lastDetected, onDetected]);
 
     return (
-        <div className='barcode-scanner'>
-    <div id="interactive" className='viewport'>
-    
-    </div>
-        </div>);
+        <BarcodeScanner/>
+    )
 };
 
 export default QuaggaScanner;

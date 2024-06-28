@@ -1,0 +1,27 @@
+  #scanner-container {
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* height: calc(100vh - 60px); */
+    height: 100dvh;
+  }
+
+  #interactive.viewport {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+}
+
+#interactive.viewport canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#interactive.viewport canvas, #interactive.viewport video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
